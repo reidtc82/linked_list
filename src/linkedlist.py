@@ -1,16 +1,5 @@
-class NonExistentNodeError(Exception):
-    def __init__(self, message="Node does not exist"):
-        self.message = message
-        super().__init__(self.message)
-
-
-class Node:
-    def __init__(self, value=None) -> None:
-        self.next = None
-        self.value = value
-
-    def __str__(self) -> str:
-        return str(self.value)
+from linked_list.src.exceptions import NonExistentNodeError
+from linked_list.src.node import Node
 
 
 class LinkedList:

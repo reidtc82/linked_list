@@ -1,6 +1,8 @@
 from traceback import print_list
 import pytest
 from linked_list.src.linkedlist import LinkedList
+from linked_list.src.exceptions import NonExistentNodeError
+from linked_list.src.node import Node
 from src.linkedlist import Node
 
 
@@ -73,3 +75,15 @@ def test_tail_is_type_node():
     ll = LinkedList()
     ll.insert_tail(5)
     assert type(ll.head).__name__ == "Node"
+
+
+def test_node():
+    nd = Node("banana")
+    assert type(nd).__name__ == "Node"
+    assert nd.next is None
+    assert nd.value == "banana"
+
+
+def test_node_str():
+    nd = Node("banana")
+    assert nd.__str__() == "banana"
