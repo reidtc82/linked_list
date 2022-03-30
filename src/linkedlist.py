@@ -14,9 +14,12 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self) -> None:
+    def __init__(self, values=None) -> None:
         self.head = None
+        self.tail = None
         self.__current = self.head
+        if values:
+            self.add_multiple_nodes(values)
 
     def __iter__(self):
         while self.__current:
@@ -27,17 +30,21 @@ class LinkedList:
         self.__current = self.head
 
     def __str__(self) -> str:
-        pass
+        return " -> ".join([str(node) for node in self])
 
     def __len__(self) -> int:
-        pass
+        pointer = self.head
+        count = 0
+
+        while pointer:
+            count += 1
+            pointer = pointer.next
+
+        return count
 
     @property
     def values(self) -> list(object):
-        pass
-
-    def reverse(self) -> None:
-        pass
+        return [pointer.value for pointer in self]
 
     def print_list(self) -> None:
         pointer = self.head
@@ -127,46 +134,13 @@ class LinkedList:
     def get(self, index) -> object:
         pass
 
+    def add_multiple_nodes(self, values) -> None:
+        for value in values:
+            self.insert_tail(value)
 
-# class LinkedList:
-#     def __init__(self, values=None):
-#         self.head = None
-#         self.tail = None
-#         if values is not None:
-#             self.add_multiple_nodes(values)
-#     def __str__(self):
-#         return ' -> '.join([str(node) for node in self])
-#     def __len__(self):
-#         count = 0
-#         node = self.head
-#         while node:
-#             count += 1
-#             node = node.next
-#         return count
-#     def __iter__(self):
-#         current = self.head
-#         while current:
-#             yield current
-#             current = current.next
-#     @property
-#     def values(self):
-#         return [node.value for node in self]
-#     def add_node(self, value):
-#         if self.head is None:
-#             self.tail = self.head = Node(value)
-#         else:
-#             self.tail.next = Node(value)
-#             self.tail = self.tail.next
-#         return self.tail
-#     def add_multiple_nodes(self, values):
-#         for value in values:
-#             self.add_node(value)
-#     def add_node_as_head(self, value):
-#         if self.head is None:
-#             self.tail = self.head = Node(value)
-#         else:
-#             self.head = Node(value, self.head)
-#         return self.head
+    def reverse(self) -> None:
+        pass
+
 
 if __name__ == "__main__":
     ll = LinkedList()
