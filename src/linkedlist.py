@@ -21,7 +21,7 @@ class LinkedList:
         if values:
             self.add_multiple_nodes(values)
 
-    def __iter__(self):
+    def __iter__(self) -> Node:
         while self.__current:
             current = self.__current
             self.__current = self.__current.next
@@ -43,7 +43,7 @@ class LinkedList:
         return count
 
     @property
-    def values(self) -> list(object):
+    def values(self) -> list:
         return [pointer.value for pointer in self]
 
     def print_list(self) -> None:
