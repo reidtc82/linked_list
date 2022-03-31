@@ -121,14 +121,29 @@ class LinkedList:
         return pointer
 
     def get(self, index) -> object:
-        pass
+        pointer = self.head
+        while index > 0:
+            if index == 0:
+                return pointer.value
+            else:
+                index -= 1
+                pointer = pointer.next
 
     def add_multiple_nodes(self, values) -> None:
         for value in values:
             self.insert_tail(value)
 
     def reverse(self) -> None:
-        pass
+        pointer = self.head
+        previous = next = None
+
+        while pointer:
+            next = pointer.next
+            pointer.next = previous
+            previous = pointer
+            pointer = next
+
+        self.head = previous
 
 
 if __name__ == "__main__":
