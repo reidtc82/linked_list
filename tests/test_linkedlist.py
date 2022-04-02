@@ -87,3 +87,19 @@ def test_node():
 def test_node_str():
     nd = Node("banana")
     assert nd.__str__() == "banana"
+
+
+def test_list_values():
+    ll = LinkedList()
+    ll.insert_head(5)
+    ll.insert_head("banana")
+    assert ll.values == [5, "banana"]
+
+
+def test_list_str(capfd):
+    ll = LinkedList()
+    ll.insert_head(5)
+    ll.insert_head("banana")
+    print(ll)
+    out, err = capfd.readouterr()
+    assert type(out).__name__ == "str"
