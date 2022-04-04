@@ -19,7 +19,7 @@ class LinkedList:
         self.__current = self.head
 
     def __str__(self) -> str:
-        return " -> ".join([str(node) for node in self])
+        return " -> ".join([str(pointer.value) for pointer in self])
 
     def __len__(self) -> int:
         pointer = self.head
@@ -46,12 +46,13 @@ class LinkedList:
         new_node = Node(head_value)
         new_node.next = self.head
         self.head = new_node
+        self.__current = self.head
 
     def insert_tail(self, tail_value) -> None:
         new_node = Node(tail_value)
 
         if self.head is None:
-            self.head = new_node
+            self.__current = self.head = new_node
         else:
             last = self.head
             while last.next:
@@ -86,7 +87,7 @@ class LinkedList:
 
         if pointer is not None:
             if pointer.value == target_value:
-                self.head = pointer.next
+                self.__current = self.head = pointer.next
                 pointer = None
                 return
 
@@ -106,7 +107,7 @@ class LinkedList:
     def pop_head(self) -> Node:
         pointer = self.head
 
-        self.head = pointer.next
+        self.__current = self.head = pointer.next
         return pointer
 
     def pop_tail(self) -> Node:
@@ -143,10 +144,11 @@ class LinkedList:
             previous = pointer
             pointer = next
 
-        self.head = previous
+        self.__current = self.head = previous
 
 
 if __name__ == "__main__":
     ll = LinkedList()
     ll.insert_head(5)
-    print(type(ll.head))
+    ll.insert_head("banana")
+    ll.values

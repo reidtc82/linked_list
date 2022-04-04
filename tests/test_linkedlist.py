@@ -93,7 +93,7 @@ def test_list_values():
     ll = LinkedList()
     ll.insert_head(5)
     ll.insert_head("banana")
-    assert ll.values == [5, "banana"]
+    assert ll.values == ["banana", 5]
 
 
 def test_list_str(capfd):
